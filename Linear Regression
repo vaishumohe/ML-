@@ -1,1 +1,12 @@
-hiii
+from sklearn.linear_model import LinearRegression
+import numpy as np
+
+X = np.array([[1], [2], [3], [4]])
+y = np.array([3, 5, 7, 9]) # y = 2x + 1
+
+model = LinearRegression().fit(X, y)
+print(f"Intercept: {model.intercept_}, Coefficient: {model.coef_}")
+print(f"Prediction for 5: {model.predict([[5]])}")
+
+output: Intercept: 1.0, Coefficient: [2.]
+Prediction for 5: [11.]
