@@ -1,0 +1,15 @@
+import numpy as np
+
+# Inputs and Targets for AND gate
+x = np.array([[1, 1], [1, -1], [-1, 1], [-1, -1]])
+y = np.array([1, -1, -1, -1])
+weights = np.zeros(2)
+bias = 0
+
+for i in range(len(x)):
+    weights += x[i] * y[i]
+    bias += y[i]
+
+print(f"Final Weights: {weights}, Final Bias: {bias}")
+
+output: Final Weights: [2. 2.], Final Bias: -2
