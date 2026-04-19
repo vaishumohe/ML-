@@ -1,10 +1,15 @@
+import numpy as np
 from sklearn.linear_model import Perceptron
 
-X = [[0,0], [0,1], [1,0], [1,1]]
-y = [0, 0, 0, 1] # AND logic
+# Data for OR gate
+X = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])
+y = np.array([0, 1, 1, 1])
 
-model = Perceptron().fit(X, y)
-print(f"Perceptron Predictions: {model.predict(X)}")
+model = Perceptron(max_iter=100, tol=1e-3)
+model.fit(X, y)
 
-  output: Perceptron Predictions: [0 0 0 1]
-  
+print(f"Perceptron OR Predictions: {model.predict(X)}")
+print(f"Final Weights: {model.coef_}")
+
+Output:-   Perceptron OR Predictions: [0 1 1 1]
+Final Weights: [[2. 2.]]
