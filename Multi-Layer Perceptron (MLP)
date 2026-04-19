@@ -1,0 +1,9 @@
+from sklearn.neural_network import MLPClassifier
+
+X = [[0,0], [0,1], [1,0], [1,1]]
+y = [0, 1, 1, 0] # XOR logic
+
+model = MLPClassifier(hidden_layer_sizes=(4,), max_iter=1000).fit(X, y)
+print(f"MLP (XOR) Predictions: {model.predict(X)}")
+
+output: MLP (XOR) Predictions: [0 0 1 1]
