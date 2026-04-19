@@ -1,15 +1,26 @@
 import numpy as np
 
-# Inputs and Targets for AND gate
+# Bipolar inputs (x1, x2) and Target (y) for AND gate
 x = np.array([[1, 1], [1, -1], [-1, 1], [-1, -1]])
 y = np.array([1, -1, -1, -1])
+
 weights = np.zeros(2)
 bias = 0
 
+print("Steps of Hebbian Learning:")
 for i in range(len(x)):
     weights += x[i] * y[i]
     bias += y[i]
+    print(f"Step {i+1}: Weights={weights}, Bias={bias}")
 
-print(f"Final Weights: {weights}, Final Bias: {bias}")
+print(f"\nFinal Weights: {weights}")
+print(f"Final Bias: {bias}")
 
-output: Final Weights: [2. 2.], Final Bias: -2
+Output:- Steps of Hebbian Learning:
+Step 1: Weights=[1. 1.], Bias=1
+Step 2: Weights=[0. 2.], Bias=0
+Step 3: Weights=[1. 1.], Bias=-1
+Step 4: Weights=[2. 2.], Bias=-2
+
+Final Weights: [2. 2.]
+Final Bias: -2
