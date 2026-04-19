@@ -1,9 +1,14 @@
+import numpy as np
 from sklearn.neural_network import MLPClassifier
 
-X = [[0,0], [0,1], [1,0], [1,1]]
-y = [0, 1, 1, 0] # XOR logic
+# Data for XOR gate (Non-linearly separable)
+X = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])
+y = np.array([0, 1, 1, 0])
 
-model = MLPClassifier(hidden_layer_sizes=(4,), max_iter=1000).fit(X, y)
-print(f"MLP (XOR) Predictions: {model.predict(X)}")
+# MLP with 1 hidden layer of 4 neurons
+mlp = MLPClassifier(hidden_layer_sizes=(4,), activation='relu', max_iter=2000)
+mlp.fit(X, y)
 
-output: MLP (XOR) Predictions: [0 0 1 1]
+print(f"MLP XOR Predictions: {mlp.predict(X)}")
+
+Output:-  MLP XOR Predictions: [0 1 1 0]
