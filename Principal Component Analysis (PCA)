@@ -1,0 +1,24 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.decomposition import PCA
+
+# Data: 2D points following a linear trend
+X = np.array([[1, 2], [2, 4], [3, 6], [4, 8], [5, 10]])
+
+pca = PCA(n_components=1)
+X_reduced = pca.fit_transform(X)
+X_recovered = pca.inverse_transform(X_reduced)
+
+print(f"Original Shape: {X.shape}")
+print(f"Reduced Shape: {X_reduced.shape}")
+print(f"Variance Ratio: {pca.explained_variance_ratio_}")
+
+plt.scatter(X[:, 0], X[:, 1], alpha=0.5, label='Original')
+plt.scatter(X_recovered[:, 0], X_recovered[:, 1], color='red', label='PCA Result')
+plt.legend()
+plt.title("PCA Dimensionality Reduction")
+plt.show()
+
+Output:- Original Shape: (5, 2)
+Reduced Shape: (5, 1)
+Variance Ratio: [1.]
